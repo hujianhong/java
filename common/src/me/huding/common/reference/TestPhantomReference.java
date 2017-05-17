@@ -17,7 +17,7 @@ public class TestPhantomReference {
 		ReferenceQueue<Bean> referenceQueue = new ReferenceQueue<>();
 		Set<PhantomReference<Bean>> set = new HashSet<>();
 		for(int i = 0;i < 10;i ++){
-			PhantomReference<Bean> reference = new PhantomReference<Bean>(new Bean("soft" + i),referenceQueue);
+			PhantomReference<Bean> reference = new PhantomReference<Bean>(new Bean("phantom" + i),referenceQueue);
 			System.out.println("just create:" + reference.get());
 			set.add(reference);
 		}

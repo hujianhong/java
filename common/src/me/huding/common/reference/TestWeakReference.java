@@ -14,7 +14,7 @@ public class TestWeakReference {
 		ReferenceQueue<Bean> referenceQueue = new ReferenceQueue<>();
 		Set<WeakReference<Bean>> set = new HashSet<>();
 		for(int i = 0;i < 10;i ++){
-			WeakReference<Bean> reference = new WeakReference<Bean>(new Bean("soft" + i),referenceQueue);
+			WeakReference<Bean> reference = new WeakReference<Bean>(new Bean("weak" + i),referenceQueue);
 			System.out.println("just create " + reference.get());
 			set.add(reference);
 		}
