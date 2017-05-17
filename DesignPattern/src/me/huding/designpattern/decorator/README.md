@@ -5,7 +5,7 @@
 
 类图：
 
-<img src="decorator.gif" width = "450" alt="图片描述" align=center />
+![](decorator.gif)
 
 
 
