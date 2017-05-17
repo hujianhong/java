@@ -6,7 +6,7 @@
 
 类图：
 
-<img src="adapter.jpg" width = "450" alt="图片描述" align=center />
+<img src="adapter.gif" width = "450" alt="图片描述" align=center />
 
 
 
