@@ -40,8 +40,6 @@ WeakReference<User>weakReference=new WeakReference<User>(new User());
 PhantomReference<User> phantomReference=new PhantomReference<User>(new User(),new ReferenceQueue<User>());
 ```
 
-
-
 Java的引用对象类在包java.lang.ref下。
 
 其中包含了三种显式的引用类型（也即是Reference类的三个子类）：

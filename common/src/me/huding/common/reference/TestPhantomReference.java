@@ -24,8 +24,8 @@ public class TestPhantomReference {
 		System.gc();
 		// 等待1000ms,测试是否会回收虚引用
 		Thread.sleep(1000);
-		
 		Reference<? extends Bean> reference = referenceQueue.poll();
+		
 		if(reference != null){
 			System.out.println("in queue : " + reference.get());
 		} else {

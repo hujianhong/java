@@ -18,6 +18,7 @@ public class TestWeakReference {
 			System.out.println("just create " + reference.get());
 			set.add(reference);
 		}
+		Bean bean = set.iterator().next().get();
 		System.gc();
 		
 		// 等待1000ms,测试是否会回收弱引用
@@ -28,6 +29,7 @@ public class TestWeakReference {
 		} else {
 			System.out.println("not in queue");
 		}
+		System.out.println(bean);
 	}
 
 }
