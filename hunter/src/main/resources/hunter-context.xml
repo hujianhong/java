@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<hunter>
+	<bean id="company" class="me.huding.hunter.app.Company"></bean>
+	<bean id="department" class="me.huding.hunter.app.Department">
+		<property name="name" value="hujianhong"></property>
+		<property name="value" value="dingfurong"></property>
+	</bean>
+</hunter>
