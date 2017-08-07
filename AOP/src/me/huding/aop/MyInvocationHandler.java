@@ -24,6 +24,8 @@ public class MyInvocationHandler implements InvocationHandler {
 	}
 
 	private void log() {
+		
+		
 		System.out.println("记录日志开始");
 	}
 
