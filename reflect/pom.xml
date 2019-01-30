@@ -15,7 +15,11 @@
     <url>http://www.huding.name</url>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.alibaba.hitsdb.client</groupId>
+            <artifactId>hitsdb-client-async</artifactId>
+            <version>1.4.6-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

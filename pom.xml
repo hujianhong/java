@@ -16,6 +16,8 @@
         <module>io</module>
         <module>reflect</module>
         <module>curator</module>
+        <module>disruptor</module>
+        <module>atomix</module>
     </modules>
 
     <name>java</name>
@@ -43,10 +45,6 @@
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.7.0</version>
-                    <configuration>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
