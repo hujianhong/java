@@ -18,6 +18,8 @@
         <module>curator</module>
         <module>disruptor</module>
         <module>atomix</module>
+        <module>jmh</module>
+        <module>rsocket</module>
     </modules>
 
     <name>java</name>
