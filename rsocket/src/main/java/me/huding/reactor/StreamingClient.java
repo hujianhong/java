@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package me.huding.rsocket;
+package me.huding.reactor;
 
 import io.rsocket.*;
 import io.rsocket.transport.netty.client.TcpClientTransport;

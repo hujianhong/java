@@ -16,3 +16,5 @@
 * [Netty4学习笔记（1）-- ChannelPipeline](https://blog.csdn.net/zxhoo/article/details/17264263)
 * [关于Netty的一些理解、实践与陷阱](https://juejin.im/entry/5a1b770251882531b15b34bbgit)
 * [Netty实现Http高性能服务器](https://juejin.im/post/5bbf58fd5188255c877e6892)
+
+* [磁盘I/O那些事](https://tech.meituan.com/2017/05/19/about-desk-io.html)

@@ -1,4 +1,4 @@
-package me.huding.rsocket;
+package me.huding.reactor;
 
 import io.rsocket.Payload;
 import io.rsocket.RSocket;
@@ -11,7 +11,7 @@ import java.net.URI;
 
 public class ExampleClient {
     public static void main(String[] args) {
-        WebsocketClientTransport ws = WebsocketClientTransport.create(URI.create("ws://rsocket-demo.herokuapp.com/ws"));
+        WebsocketClientTransport ws = WebsocketClientTransport.create(URI.create("ws://reactor-demo.herokuapp.com/ws"));
         RSocket client = RSocketFactory.connect().keepAlive().transport(ws).start().block();
 
         try {

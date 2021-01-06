@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package me.huding.rsocket;
+package me.huding.reactor;
 
 import io.rsocket.AbstractRSocket;
 import io.rsocket.Payload;
@@ -23,43 +23,59 @@ import io.rsocket.RSocketFactory;
 import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.transport.netty.server.TcpServerTransport;
 import io.rsocket.util.DefaultPayload;
-import java.time.Duration;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public final class DuplexClient {
+public final class HelloWorldClient {
 
   public static void main(String[] args) {
     RSocketFactory.receive()
         .acceptor(
-            (setup, reactiveSocket) -> {
-              reactiveSocket
-                  .requestStream(DefaultPayload.create("Hello-Bidi"))
-                  .map(Payload::getDataUtf8)
-                  .log()
-                  .subscribe();
+            (setupPayload, reactiveSocket) ->
+                Mono.just(
+                    new AbstractRSocket() {
+                      boolean fail = true;
 
-              return Mono.just(new AbstractRSocket() {});
-            })
+                      @Override
+                      public Mono<Payload> requestResponse(Payload p) {
+                        if (fail) {
+                          fail = false;
+                          return Mono.error(new Throwable());
+                        } else {
+                          return Mono.just(p);
+                        }
+                      }
+                    }))
         .transport(TcpServerTransport.create("localhost", 7000))
         .start()
         .subscribe();
 
     RSocket socket =
         RSocketFactory.connect()
-            .acceptor(
-                rSocket ->
-                    new AbstractRSocket() {
-                      @Override
-                      public Flux<Payload> requestStream(Payload payload) {
-                        return Flux.interval(Duration.ofSeconds(1))
-                            .map(aLong -> DefaultPayload.create("Bi-di Response => " + aLong));
-                      }
-                    })
             .transport(TcpClientTransport.create("localhost", 7000))
             .start()
             .block();
 
-    socket.onClose().block();
+    socket
+        .requestResponse(DefaultPayload.create("Hello"))
+        .map(Payload::getDataUtf8)
+        .onErrorReturn("error")
+        .doOnNext(System.out::println)
+        .block();
+
+    socket
+        .requestResponse(DefaultPayload.create("Hello"))
+        .map(Payload::getDataUtf8)
+        .onErrorReturn("error")
+        .doOnNext(System.out::println)
+        .block();
+
+    socket
+        .requestResponse(DefaultPayload.create("Hello"))
+        .map(Payload::getDataUtf8)
+        .onErrorReturn("error")
+        .doOnNext(System.out::println)
+        .block();
+
+    socket.dispose();
   }
 }
